@@ -1,0 +1,386 @@
+{
+  "Duke Blue Devils": {
+    "aliases": ["duke", "blue devils"],
+    "coach": ["Jon Scheyer", "Scheyer"],
+    "players": ["Cameron Boozer", "Cayden Boozer", "Isaiah Evans", "Boozer", "Evans"],
+    "ignore_words": []
+  },
+  "Arizona Wildcats": {
+    "aliases": ["zona", "u of a", "wildcats", "arizona"],
+    "coach": ["Tommy Lloyd", "Lloyd"],
+    "players": ["Carter Bryant", "Jaden Bradley", "Bryant", "Bradley"],
+    "ignore_words": []
+  },
+  "Florida Gators": {
+    "aliases": ["florida", "uf", "gators"],
+    "coach": ["Todd Golden", "Golden"],
+    "players": ["Thomas Haugh", "Alex Condon", "Condon", "Haugh"],
+    "ignore_words": []
+  },
+  "Michigan Wolverines": {
+    "aliases": ["umich", "michigan", "u of m", "wolverines"],
+    "coach": ["Dusty May", "May"],
+    "players": ["Elliott Cadeau", "Vlad Goldin", "Yaxel Lendeborg", "Lendeborg", "Goldin", "Cadeau"],
+    "ignore_words": []
+  },
+  "Purdue Boilermakers": {
+    "aliases": ["boilermakers", "purdue", "boilers"],
+    "coach": ["Matt Painter", "Painter"],
+    "players": ["Braden Smith", "Trey Kaufman-Renn", "Fletcher Loyer", "Kaufman-Renn", "Smith", "Loyer"],
+    "ignore_words": []
+  },
+  "Houston Cougars": {
+    "aliases": ["houston", "coogs", "uh", "cougars"],
+    "coach": ["Kelvin Sampson", "Sampson"],
+    "players": ["Kingston Flemings", "J'Wan Roberts", "Emanuel Sharp", "Flemings", "Sharp", "Roberts"],
+    "ignore_words": []
+  },
+  "UConn Huskies": {
+    "aliases": ["uconn", "connecticut", "huskies"],
+    "coach": ["Dan Hurley", "Hurley"],
+    "players": ["Alex Karaban", "Solo Ball", "Liam McNeeley", "Ball", "McNeeley", "Karaban"],
+    "ignore_words": ["dog"]
+  },
+  "Iowa State Cyclones": {
+    "aliases": ["cyclones", "isu", "iowa state"],
+    "coach": ["T.J. Otzelberger", "Otzelberger", "TJ"],
+    "players": ["Keshon Gilbert", "Tamin Lipsey", "Joshua Jefferson", "Jefferson", "Gilbert", "Lipsey"],
+    "ignore_words": []
+  },
+  "Michigan State Spartans": {
+    "aliases": ["msu", "spartans", "michigan state"],
+    "coach": ["Tom Izzo", "Izzo"],
+    "players": ["Jeremy Fears Jr.", "Jaxon Kohler", "Xavier Booker", "Kohler", "Booker", "Fears"],
+    "ignore_words": []
+  },
+  "Gonzaga Bulldogs": {
+    "aliases": ["bulldogs", "gu", "gonzaga", "zags"],
+    "coach": ["Mark Few", "Few"],
+    "players": ["Ryan Nembhard", "Graham Ike", "Michael Ajayi", "Ajayi", "Nembhard", "Ike"],
+    "ignore_words": []
+  },
+  "Illinois Fighting Illini": {
+    "aliases": ["illini", "illinois"],
+    "coach": ["Brad Underwood", "Underwood"],
+    "players": ["Andrej Stojakovic", "Keaton Wagler", "Kylan Boswell", "Tomislav Ivisic", "Stojakovic", "Wagler", "Ivisic", "Boswell"],
+    "ignore_words": []
+  },
+  "Virginia Cavaliers": {
+    "aliases": ["cavaliers", "uva", "virginia", "wahoos", "hoos"],
+    "coach": ["Ron Sanchez", "Sanchez"],
+    "players": ["Elijah Saunders", "Isaac McKneely", "McKneely", "Saunders"],
+    "ignore_words": []
+  },
+  "Kansas Jayhawks": {
+    "aliases": ["kansas", "jayhawks", "rock chalk", "ku"],
+    "coach": ["Bill Self", "Self"],
+    "players": ["Dajuan Harris", "Hunter Dickinson", "Darryn Peterson", "Peterson", "Dickinson", "Harris"],
+    "ignore_words": []
+  },
+  "Arkansas Razorbacks": {
+    "aliases": ["razorbacks", "hogs", "arkansas"],
+    "coach": ["John Calipari", "Calipari", "Coach Cal"],
+    "players": ["Johnell Davis", "Darius Acuff Jr.", "Boogie Fland", "Acuff", "Fland", "Davis"],
+    "ignore_words": []
+  },
+  "Nebraska Cornhuskers": {
+    "aliases": ["cornhuskers", "nebraska", "huskers"],
+    "coach": ["Fred Hoiberg", "Hoiberg"],
+    "players": ["Brice Williams", "Rienk Mast", "Mast", "Williams"],
+    "ignore_words": []
+  },
+  "Alabama Crimson Tide": {
+    "aliases": [ "tide", "bama", "alabama", "roll tide"],
+    "coach": ["Nate Oats", "Oats"],
+    "players": ["Labaron Philon", "Mark Sears", "Grant Nelson", "Philon", "Nelson", "Sears"],
+    "ignore_words": []
+  },
+  "St. John's Red Storm": {
+    "aliases": ["st johns", "st. john's", "johnnies", "red storm"],
+    "coach": ["Rick Pitino", "Pitino"],
+    "players": ["Zuby Ejiofor", "Kadary Richmond", "Deivon Smith", "Smith", "Richmond", "Ejiofor"],
+    "ignore_words": []
+  },
+  "Wisconsin Badgers": {
+    "aliases": ["wisconsin", "badgers", "uw"],
+    "coach": ["Greg Gard", "Gard"],
+    "players": ["Nolan Winter", "John Blackwell", "Winter", "Blackwell"],
+    "ignore_words": []
+  },
+  "Vanderbilt Commodores": {
+    "aliases": ["dores", "vanderbilt", "commodores", "vandy"],
+    "coach": ["Mark Byington", "Byington"],
+    "players": ["Jason Edwards", "Tyler Tanner", "Tanner", "Edwards"],
+    "ignore_words": []
+  },
+  "Texas Tech": {
+    "aliases": ["ttu", "red raiders", "texas tech", "tech"],
+    "coach": ["Grant McCasland", "McCasland"],
+    "players": ["Christian Anderson", "JT Toppin", "Darrion Williams", "Williams", "Anderson", "Toppin"],
+    "ignore_words": []
+  },
+  "Louisville Cardinals": {
+    "aliases": ["louisville", "cardinals", "cards", "uofl"],
+    "coach": ["Pat Kelsey", "Kelsey"],
+    "players": ["Chucky Hepburn", "J'Vonne Hadley", "Ryan Conwell", "Hepburn", "Hadley", "Conwell"],
+    "ignore_words": []
+  },
+  "BYU Cougars": {
+    "aliases": ["byu", "cougars"],
+    "coach": ["Kevin Young", "Young"],
+    "players": ["AJ Dybantsa", "Egor Demin", "Dybantsa", "Demin"],
+    "ignore_words": []
+  },
+  "North Carolina Tar Heels": {
+    "aliases": ["north carolina", "unc", "tar heels", "carolina", "heels"],
+    "coach": ["Hubert Davis", "Davis"],
+    "players": ["Caleb Wilson", "Ian Jackson", "RJ Davis", "Elliot Cadeau", "Seth Trimble", "Trimble", "Cadeau", "Wilson", "Davis", "Jackson"],
+    "ignore_words": []
+  },
+  "Tennessee Volunteers": {
+    "aliases": ["volunteers", "tennessee", "ut", "vols"],
+    "coach": ["Rick Barnes", "Barnes"],
+    "players": ["Ja'Kobi Gillespie", "Nate Ament", "Zakai Zeigler", "Gillespie", "Zeigler", "Ament"],
+    "ignore_words": []
+  },
+  "UCLA Bruins": {
+    "aliases": ["bruins", "ucla"],
+    "coach": ["Mick Cronin", "Cronin"],
+    "players": ["Donovan Dent", "Dylan Andrews", "Kobe Johnson", "Johnson", "Dent", "Andrews"],
+    "ignore_words": []
+  },
+  "Miami Ibises": {
+    "aliases": ["ibises", "miami fl", "canes", "hurricanes", "miami"],
+    "coach": ["Jim Larrañaga", "Larranaga"],
+    "players": ["Jalil Bethea", "Matthew Cleveland", "Nijal Aylin", "Bethea", "Aylin", "Cleveland"],
+    "ignore_words": []
+  },
+  "Saint Mary's Gaels": {
+    "aliases": ["saint mary's", "smc", "gaels"],
+    "coach": ["Randy Bennett", "Bennett"],
+    "players": ["Mitchell Saxen", "Augustas Marciulionis", "Saxen", "Marciulionis"],
+    "ignore_words": []
+  },
+  "Kentucky Wildcats": {
+    "aliases": ["kentucky", "wildcats", "bbo", "cats", "uk"],
+    "coach": ["Mark Pope", "Pope"],
+    "players": ["Andrew Carr", "Lamont Butler", "Jaxson Robinson", "Carr", "Robinson", "Butler"],
+    "ignore_words": []
+  },
+  "Ohio State Buckeyes": {
+    "aliases": ["buckeyes", "osu", "ohio state"],
+    "coach": ["Jake Diebler", "Diebler"],
+    "players": ["Meechie Johnson Jr.", "Bruce Thornton", "Thornton", "Johnson"],
+    "ignore_words": []
+  },
+  "Villanova Wildcats": {
+    "aliases": ["villanova", "wildcats", "nova"],
+    "coach": ["Kyle Neptune", "Neptune"],
+    "players": ["Wooga Poplar", "Eric Dixon", "Poplar", "Dixon"],
+    "ignore_words": []
+  },
+  "Clemson Tigers": {
+    "aliases": ["clemson", "tigers"],
+    "coach": ["Brad Brownell", "Brownell"],
+    "players": ["Chase Hunter", "Ian Schieffelin", "Hunter", "Schieffelin"],
+    "ignore_words": []
+  },
+  "Georgia Bulldogs": {
+    "aliases": ["georgia", "bulldogs", "dawgs", "uga"],
+    "coach": ["Mike White", "White"],
+    "players": ["Silas Demary Jr.", "Asa Newell", "Demary", "Newell"],
+    "ignore_words": []
+  },
+  "TCU Horned Frogs": {
+    "aliases": ["tcu", "horned frogs", "frogs"],
+    "coach": ["Jamie Dixon", "Dixon"],
+    "players": ["Noah Reynolds", "Frankie Collins", "Reynolds", "Collins"],
+    "ignore_words": []
+  },
+  "Utah State Aggies": {
+    "aliases": ["usu", "utah state", "aggies"],
+    "coach": ["Jerrod Calhoun", "Calhoun"],
+    "players": ["Mason Falslev", "Ian Martinez", "Martinez", "Falslev"],
+    "ignore_words": []
+  },
+  "Iowa Hawkeyes": {
+    "aliases": ["hawkeyes", "iowa"],
+    "coach": ["Fran McCaffery", "McCaffery"],
+    "players": ["Owen Freeman", "Bennett Stirtz", "Payton Sandfort", "Freeman", "Sandfort", "Stirtz"],
+    "ignore_words": []
+  },
+  "Saint Louis Billikins": {
+    "aliases": ["billikens", "saint louis", "slu", "billikins"],
+    "coach": ["Josh Schertz", "Schertz"],
+    "players": ["Isaiah Swope", "Robbie Avila", "Swope", "Avila"],
+    "ignore_words": []
+  },
+  "UCF Knights": {
+    "aliases": ["ucf", "knights"],
+    "coach": ["Johnny Dawkins", "Dawkins"],
+    "players": ["Darius Johnson", "Jaylin Sellers", "Johnson", "Sellers"],
+    "ignore_words": []
+  },
+  "Missouri Tigers": {
+    "aliases": ["mizzou", "tigers", "missouri"],
+    "coach": ["Dennis Gates", "Gates"],
+    "players": ["Mark Mitchell", "Tamar Bates", "Mitchell", "Bates"],
+    "ignore_words": []
+  },
+  "Texas A&M Aggies": {
+    "aliases": ["texas a&m", "aggies", "tamu"],
+    "coach": ["Buzz Williams", "Williams"],
+    "players": ["Wade Taylor IV", "Andersson Garcia", "Taylor", "Garcia"],
+    "ignore_words": []
+  },
+  "Santa Clara Broncos": {
+    "aliases": ["broncos", "santa clara"],
+    "coach": ["Herb Sendek", "Sendek"],
+    "players": ["Adama Bal", "Christoph Tilly", "Tilly", "Bal"],
+    "ignore_words": []
+  },
+  "South Florida Bulls": {
+    "aliases": ["bulls", "usf", "south florida"],
+    "coach": ["Ben Fletcher", "Fletcher"],
+    "players": ["Kobe Knox", "Jayden Reid", "Knox", "Reid"],
+    "ignore_words": []
+  },
+  "Texas Longhorns": {
+    "aliases": ["horns", "hook em", "longhorns", "ut", "texas"],
+    "coach": ["Rodney Terry", "Terry"],
+    "players": ["Tramon Mark", "Arthur Kaluma", "Tre Johnson", "Johnson", "Mark", "Kaluma"],
+    "ignore_words": []
+  },
+  "VCU Rams": {
+    "aliases": ["rams", "vcu"],
+    "coach": ["Ryan Odom", "Odom"],
+    "players": ["Max Shulga", "Zeb Jackson", "Shulga", "Jackson"],
+    "ignore_words": []
+  },
+  "Miami RedHawks": {
+    "aliases": ["redhawks", "miami ohio", "miami oh", "miami"],
+    "coach": ["Travis Steele", "Steele"],
+    "players": ["Eian Elmer", "Evan Ipsaro", "Elmer", "Ipsaro"],
+    "ignore_words": []
+  },
+  "Northern Iowa University Panthers": {
+    "aliases": ["panthers", "northern iowa", "uni"],
+    "coach": ["Ben Jacobson", "Jacobson"],
+    "players": ["Jacob Hutson", "Tytan Anderson", "Anderson", "Hutson"],
+    "ignore_words": []
+  },
+  "High Point Panthers": {
+    "aliases": ["panthers", "hpu", "high point"],
+    "coach": ["Alan Huss", "Huss"],
+    "players": ["Kimani Hamilton", "Kezza Giffa", "Giffa", "Hamilton"],
+    "ignore_words": []
+  },
+  "McNeese State Cowboys": {
+    "aliases": ["cowboys", "mcneese", "mcneese state"],
+    "coach": ["Will Wade", "Wade"],
+    "players": ["Javohn Garcia", "Christian Shumate", "Shumate", "Garcia"],
+    "ignore_words": []
+  },
+  "Akron Zippers": {
+    "aliases": ["akron", "zips", "zippers"],
+    "coach": ["John Groce", "Groce"],
+    "players": ["Nate Johnson", "Isaiah Thompson", "Thompson", "Johnson"],
+    "ignore_words": []
+  },
+  "Cal Baptist Lancers": {
+    "aliases": ["lancers", "cal baptist", "cbu"],
+    "coach": ["Rick Croy", "Croy"],
+    "players": ["Dominique Daniels Jr.", "Daniels"],
+    "ignore_words": []
+  },
+  "Hawaii Warriors": {
+    "aliases": ["warriors", "hawaii", "rainbow warriors", "uh"],
+    "coach": ["Eran Ganot", "Ganot"],
+    "players": ["Tomiwa Alonge", "Akira Jacobs", "Jacobs", "Alonge"],
+    "ignore_words": []
+  },
+  "Troy University Trojans": {
+    "aliases": ["trojans", "troy"],
+    "coach": ["Scott Cross", "Cross"],
+    "players": ["Tayton Conerway", "Conerway"],
+    "ignore_words": []
+  },
+  "Hofstra Pride": {
+    "aliases": ["hofstra", "pride"],
+    "coach": ["Speedy Claxton", "Claxton"],
+    "players": ["Cruz Davis", "Jean Aranguren", "Aranguren", "Davis"],
+    "ignore_words": []
+  },
+  "North Dakota State University Buffaloes": {
+    "aliases": ["ndsu", "bison", "north dakota state", "buffaloes"],
+    "coach": ["David Richman", "Richman"],
+    "players": ["Jacari White", "Noah Feddersen", "Feddersen", "White"],
+    "ignore_words": []
+  },
+  "Kennesaw State Owls": {
+    "aliases": ["ksu", "kennesaw state", "owls"],
+    "coach": ["Antoine Pettway", "Pettway"],
+    "players": ["RJ Johnson", "Simeon Cottle", "Johnson", "Cottle"],
+    "ignore_words": []
+  },
+  "Penn Quakers": {
+    "aliases": ["penn", "upenn", "quakers"],
+    "coach": ["Steve Donahue", "Donahue"],
+    "players": ["Sam Brown", "Nick Spinoso", "Spinoso", "Brown"],
+    "ignore_words": []
+  },
+  "Wright State Raiders": {
+    "aliases": ["wsu", "raiders", "wright state"],
+    "coach": ["Clint Sargent", "Sargent"],
+    "players": ["Brandon Noel", "Alex Huibregtse", "Noel", "Huibregtse"],
+    "ignore_words": []
+  },
+  "Furman Paladins": {
+    "aliases": ["paladins", "furman"],
+    "coach": ["Bob Richey", "Richey"],
+    "players": ["Tyrese Hughey", "Pjay Smith", "Hughey", "Smith"],
+    "ignore_words": []
+  },
+  "Queens University Royals": {
+    "aliases": ["royals", "queens nc", "queens"],
+    "coach": ["Grant Leonard", "Leonard"],
+    "players": ["Chris Ashby", "Bryce Cash", "Cash", "Ashby"],
+    "ignore_words": []
+  },
+  "Idaho University Vandals": {
+    "aliases": ["vandals", "idaho"],
+    "coach": ["Alex Pribble", "Pribble"],
+    "players": ["Tyler Mrus", "Julius Mims", "Mims", "Mrus"],
+    "ignore_words": []
+  },
+  "Tennessee State Tigers": {
+    "aliases": ["tigers", "tsu", "tennessee state"],
+    "coach": ["Brian Collins", "Penny Collins", "Collins"],
+    "players": ["Christian Brown", "Brown"],
+    "ignore_words": []
+  },
+  "Siena Saints": {
+    "aliases": ["siena", "saints"],
+    "coach": ["Gerry McNamara", "McNamara"],
+    "players": ["Major Freeman", "Marcus Jackson", "Freeman", "Jackson"],
+    "ignore_words": []
+  },
+  "LIU Blackbirds": {
+    "aliases": ["sharks", "blackbirds", "liu", "liu sharks"],
+    "coach": ["Rod Strickland", "Strickland"],
+    "players": ["Tai Strickland", "CJ Delancy", "Strickland", "Delancy"],
+    "ignore_words": []
+  },
+  "Prairie View A&M Panthers": {
+    "aliases": ["pvamu", "panthers", "prairie view", "pva&m"],
+    "coach": ["Byron Smith", "Smith"],
+    "players": ["Orlando Horton Jr.", "Horton"],
+    "ignore_words": []
+  },
+  "Howard Bison": {
+    "aliases": ["howard", "bison"],
+    "coach": ["Kenny Blakeney", "Blakeney"],
+    "players": ["Bryce Harris", "Marcus Dockery", "Harris", "Dockery"],
+    "ignore_words": []
+  }
+}
