@@ -1,6 +1,6 @@
 {
   "Duke Blue Devils": {
-    "aliases": ["duke", "blue devils"],
+    "aliases": ["duke", "blue devils", "cameron indoor", "durham"],
     "coach": ["Jon Scheyer", "Scheyer"],
     "players": ["Cameron Boozer", "Cayden Boozer", "Isaiah Evans", "Boozer", "Evans"],
     "ignore_words": []
@@ -12,13 +12,13 @@
     "ignore_words": []
   },
   "Florida Gators": {
-    "aliases": ["florida", "uf", "gators"],
+    "aliases": ["florida", "uf", "gators", "gainesville", "chomping"],
     "coach": ["Todd Golden", "Golden"],
     "players": ["Thomas Haugh", "Alex Condon", "Condon", "Haugh"],
     "ignore_words": []
   },
   "Michigan Wolverines": {
-    "aliases": ["umich", "michigan", "u of m", "wolverines"],
+    "aliases": ["umich", "michigan", "u of m", "wolverines", "go blue", "ann arbor", "maize and blue"],
     "coach": ["Dusty May", "May"],
     "players": ["Elliott Cadeau", "Vlad Goldin", "Yaxel Lendeborg", "Lendeborg", "Goldin", "Cadeau"],
     "ignore_words": []
@@ -36,31 +36,31 @@
     "ignore_words": []
   },
   "UConn Huskies": {
-    "aliases": ["uconn", "connecticut", "huskies"],
+    "aliases": ["uconn", "connecticut", "huskies", "storrs", "gampel", "yukon"],
     "coach": ["Dan Hurley", "Hurley"],
     "players": ["Alex Karaban", "Solo Ball", "Liam McNeeley", "Ball", "McNeeley", "Karaban"],
     "ignore_words": ["dog"]
   },
   "Iowa State Cyclones": {
-    "aliases": ["cyclones", "isu", "iowa state"],
+    "aliases": ["cyclones", "isu", "iowa state", "ames"],
     "coach": ["T.J. Otzelberger", "Otzelberger", "TJ"],
     "players": ["Keshon Gilbert", "Tamin Lipsey", "Joshua Jefferson", "Jefferson", "Gilbert", "Lipsey"],
     "ignore_words": []
   },
   "Michigan State Spartans": {
-    "aliases": ["msu", "spartans", "michigan state"],
+    "aliases": ["msu", "spartans", "michigan state", "east lansing", "go green", "go white"],
     "coach": ["Tom Izzo", "Izzo"],
     "players": ["Jeremy Fears Jr.", "Jaxon Kohler", "Xavier Booker", "Kohler", "Booker", "Fears"],
     "ignore_words": []
   },
   "Gonzaga Bulldogs": {
-    "aliases": ["bulldogs", "gu", "gonzaga", "zags"],
+    "aliases": ["bulldogs", "gu", "gonzaga", "zags", "spokane", "zagland"],
     "coach": ["Mark Few", "Few"],
     "players": ["Ryan Nembhard", "Graham Ike", "Michael Ajayi", "Ajayi", "Nembhard", "Ike"],
     "ignore_words": []
   },
   "Illinois Fighting Illini": {
-    "aliases": ["illini", "illinois"],
+    "aliases": ["illini", "illinois", "fighting illini", "champaign", "i-l-l"],
     "coach": ["Brad Underwood", "Underwood"],
     "players": ["Andrej Stojakovic", "Keaton Wagler", "Kylan Boswell", "Tomislav Ivisic", "Stojakovic", "Wagler", "Ivisic", "Boswell"],
     "ignore_words": []
@@ -72,25 +72,25 @@
     "ignore_words": []
   },
   "Kansas Jayhawks": {
-    "aliases": ["kansas", "jayhawks", "rock chalk", "ku"],
+    "aliases": ["kansas", "jayhawks", "rock chalk", "ku", "phog allen", "lawrence"],
     "coach": ["Bill Self", "Self"],
     "players": ["Dajuan Harris", "Hunter Dickinson", "Darryn Peterson", "Peterson", "Dickinson", "Harris"],
     "ignore_words": []
   },
   "Arkansas Razorbacks": {
-    "aliases": ["razorbacks", "hogs", "arkansas"],
+    "aliases": ["razorbacks", "hogs", "arkansas", "woo pig", "wps", "suiiiie"],
     "coach": ["John Calipari", "Calipari", "Coach Cal"],
     "players": ["Johnell Davis", "Darius Acuff Jr.", "Boogie Fland", "Acuff", "Fland", "Davis"],
     "ignore_words": []
   },
   "Nebraska Cornhuskers": {
-    "aliases": ["cornhuskers", "nebraska", "huskers"],
+    "aliases": ["cornhuskers", "nebraska", "huskers", "go big red", "gbr", "lincoln"],
     "coach": ["Fred Hoiberg", "Hoiberg"],
     "players": ["Brice Williams", "Rienk Mast", "Mast", "Williams"],
     "ignore_words": []
   },
   "Alabama Crimson Tide": {
-    "aliases": [ "tide", "bama", "alabama", "roll tide"],
+    "aliases": [ "tide", "bama", "alabama", "roll tide", "crimson tide", "rtr"],
     "coach": ["Nate Oats", "Oats"],
     "players": ["Labaron Philon", "Mark Sears", "Grant Nelson", "Philon", "Nelson", "Sears"],
     "ignore_words": []
@@ -102,7 +102,7 @@
     "ignore_words": []
   },
   "Wisconsin Badgers": {
-    "aliases": ["wisconsin", "badgers", "uw"],
+    "aliases": ["wisconsin", "badgers", "uw", "bucky", "madison", "on wisconsin"],
     "coach": ["Greg Gard", "Gard"],
     "players": ["Nolan Winter", "John Blackwell", "Winter", "Blackwell"],
     "ignore_words": []
@@ -114,7 +114,7 @@
     "ignore_words": []
   },
   "Texas Tech": {
-    "aliases": ["ttu", "red raiders", "texas tech", "tech"],
+    "aliases": ["ttu", "red raiders", "texas tech", "tech", "lubbock", "guns up", "wreck em", "tt"],
     "coach": ["Grant McCasland", "McCasland"],
     "players": ["Christian Anderson", "JT Toppin", "Darrion Williams", "Williams", "Anderson", "Toppin"],
     "ignore_words": []
@@ -126,7 +126,7 @@
     "ignore_words": []
   },
   "BYU Cougars": {
-    "aliases": ["byu", "cougars"],
+    "aliases": ["byu", "cougars", "cougs", "rise and shout", "provo"],
     "coach": ["Kevin Young", "Young"],
     "players": ["AJ Dybantsa", "Egor Demin", "Dybantsa", "Demin"],
     "ignore_words": []
@@ -138,7 +138,7 @@
     "ignore_words": []
   },
   "Tennessee Volunteers": {
-    "aliases": ["volunteers", "tennessee", "ut", "vols"],
+    "aliases": ["volunteers", "tennessee", "ut", "vols", "rocky top", "big orange", "knoxville"],
     "coach": ["Rick Barnes", "Barnes"],
     "players": ["Ja'Kobi Gillespie", "Nate Ament", "Zakai Zeigler", "Gillespie", "Zeigler", "Ament"],
     "ignore_words": []
@@ -209,7 +209,7 @@
     "players": ["Owen Freeman", "Bennett Stirtz", "Payton Sandfort", "Freeman", "Sandfort", "Stirtz"],
     "ignore_words": []
   },
-  "Saint Louis Billikins": {
+  "Saint Louis Billikens": {
     "aliases": ["billikens", "saint louis", "slu", "billikins"],
     "coach": ["Josh Schertz", "Schertz"],
     "players": ["Isaiah Swope", "Robbie Avila", "Swope", "Avila"],
@@ -246,7 +246,7 @@
     "ignore_words": []
   },
   "Texas Longhorns": {
-    "aliases": ["horns", "hook em", "longhorns", "ut", "texas"],
+    "aliases": ["horns", "hook em", "longhorns", "ut", "texas", "burnt orange", "austin"],
     "coach": ["Rodney Terry", "Terry"],
     "players": ["Tramon Mark", "Arthur Kaluma", "Tre Johnson", "Johnson", "Mark", "Kaluma"],
     "ignore_words": []
