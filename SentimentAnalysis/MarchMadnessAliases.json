@@ -90,9 +90,9 @@
     "ignore_words": []
   },
   "Alabama Crimson Tide": {
-    "aliases": [ "tide", "bama", "alabama", "roll tide", "crimson tide", "rtr"],
+    "aliases": [ "tide", "bama", "alabama", "roll tide", "crimson tide", "rtr", "tyde", "tide"],
     "coach": ["Nate Oats", "Oats"],
-    "players": ["Labaron Philon", "Mark Sears", "Grant Nelson", "Philon", "Nelson", "Sears"],
+    "players": ["Labaron Philon", "Mark Sears", "Grant Nelson", "Bol Bowen", "Philon", "Nelson", "Sears", "Bowen", "Labaron"],
     "ignore_words": []
   },
   "St. John's Red Storm": {
@@ -108,7 +108,7 @@
     "ignore_words": []
   },
   "Vanderbilt Commodores": {
-    "aliases": ["dores", "vanderbilt", "commodores", "vandy"],
+    "aliases": ["dores", "vanderbilt", "commodores", "vandy", "anchor down"],
     "coach": ["Mark Byington", "Byington"],
     "players": ["Jason Edwards", "Tyler Tanner", "Tanner", "Edwards"],
     "ignore_words": []
@@ -133,7 +133,7 @@
   },
   "North Carolina Tar Heels": {
     "aliases": ["north carolina", "unc", "tar heels", "carolina", "heels"],
-    "coach": ["Hubert Davis", "Davis"],
+    "coach": ["Hubert Davis", "Davis", "Hubert"],
     "players": ["Caleb Wilson", "Ian Jackson", "RJ Davis", "Elliot Cadeau", "Seth Trimble", "Trimble", "Cadeau", "Wilson", "Davis", "Jackson"],
     "ignore_words": []
   },
@@ -252,7 +252,7 @@
     "ignore_words": []
   },
   "VCU Rams": {
-    "aliases": ["rams", "vcu"],
+    "aliases": ["rams", "vcu", "ramily", "ram nation", "ramnation", "go rams"],
     "coach": ["Ryan Odom", "Odom"],
     "players": ["Max Shulga", "Zeb Jackson", "Shulga", "Jackson"],
     "ignore_words": []
