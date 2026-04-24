@@ -60,6 +60,7 @@ def load_teams(json_path):
         raw = json.load(f)
     return {
         name: {
+            "file_names":   d.get("file_names", []),
             "aliases":      [a.lower() for a in d.get("aliases", [])],
             "coach":        [c.lower() for c in d.get("coach", [])],
             "players":      [p.lower() for p in d.get("players", [])],
@@ -68,31 +69,37 @@ def load_teams(json_path):
         for name, d in raw.items()
     }
 
-
 def detect_teams_from_filename(filename, teams):
-    """Parse 'Alabama-Texas_Tech_comments.xlsx' → ['Alabama Crimson Tide', 'Texas Tech']"""
+    """Look up which two teams play in this file using the file_names field
+    in the JSON — exact match, no alias guessing needed.
+    Returns [team1_name, team2_name] in the order they appear in the filename."""
     base = re.sub(r'_?comments$', '',
                   os.path.splitext(os.path.basename(filename))[0],
                   flags=re.IGNORECASE)
-    parts   = base.split("-")
-    t1r = parts[0].replace("_", " ").strip().lower() if parts      else ""
-    t2r = parts[1].replace("_", " ").strip().lower() if len(parts)>1 else ""
 
-    found = []
-    for name, data in teams.items():
-        for alias in data["aliases"]:
-            if alias in t1r or alias in t2r or t1r in alias or t2r in alias:
-                if name not in found:
-                    found.append(name)
-                break
+    matched = [name for name, data in teams.items() if base in data["file_names"]]
 
-    # Sort so team1 from filename comes first
-    if len(found) == 2:
-        found.sort(key=lambda t: 0 if any(
-            a in t1r or t1r in a for a in teams[t]["aliases"]) else 1)
+    if len(matched) < 2:
+        print(f"  WARNING: could not find 2 teams for '{base}' in file_names — found {matched}")
+        return matched + ["Team 2"] if len(matched) == 1 else ["Team 1", "Team 2"]
 
-    return found if found else [t1r.title(), t2r.title()]
+    parts = base.split("-", 1)
+    left  = parts[0].lower() if parts      else ""
+    right = parts[1].lower() if len(parts) > 1 else ""
 
+    def team_side(name):
+        """Return 0 if this team belongs on the left, 1 if right."""
+        aliases = teams[name]["aliases"]
+        left_score  = any(a in left  or left  in a for a in aliases)
+        right_score = any(a in right or right in a for a in aliases)
+        if left_score and not right_score:
+            return 0
+        if right_score and not left_score:
+            return 1
+        return 0 if name.lower().split()[0] in left else 1
+
+    matched.sort(key=team_side)
+    return matched
 
 def comment_matches_team(text_lower, data):
     """Return True if the comment contains any alias/coach/player keyword."""
