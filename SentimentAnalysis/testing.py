@@ -1,12 +1,12 @@
 """
 March Madness Sentiment Analysis  —  FINAL VERSION
 =====================================================
-- Reads team data from MarchMadnessAliases.json
-- Detects which team each comment is about
-- Runs Cardiff RoBERTa sentiment model
-- Produces 3 output Excel files:
+-Reads team data from MarchMadnessAliases.json
+-Detects which team each comment is about
+-Runs Cardiff RoBERTa sentiment model
+-Produces 2 output Excel files:
     1. all_comments_labeled.xlsx  — every comment tagged + scored
-    3. sentiment_summary.xlsx     — sentiment breakdown per team per game
+    2. sentiment_summary.xlsx     — sentiment breakdown per team per game
 
 SETUP: Place this script + MarchMadnessAliases.json in the same folder
        as all your game .xlsx files, then run:  python sentiment_analysis.py
@@ -21,25 +21,23 @@ from openpyxl.styles import Font, PatternFill, Alignment, Border, Side
 from openpyxl.utils import get_column_letter
 from transformers import AutoTokenizer, AutoConfig, AutoModelForSequenceClassification
 
-# ─── CONFIGURE THESE ────────────────────────────────────────────────────────
 INPUT_FILES  = "*.xlsx"
 COMMENT_COL  = "Comment"
-SHEET_NAME   = 0                          # 0 = first sheet
+SHEET_NAME   = 0                          
 TEAMS_JSON   = "MarchMadnessAliases.json"
-# ────────────────────────────────────────────────────────────────────────────
 
-# Output filenames — these are always skipped as inputs so we never re-process them
+#Output filenames
 OUTPUT_FILES = {
     "all_comments_labeled.xlsx",
     "sentiment_summary.xlsx",
 }
 
-# ── Styling ──────────────────────────────────────────────────────────────────
+#── Styling ──────────────────────────────────────────────────────────────────
 HEADER_FILL  = PatternFill("solid", fgColor="1F4E79")
-TEAM1_FILL   = PatternFill("solid", fgColor="D9E1F2")   # light blue
-TEAM2_FILL   = PatternFill("solid", fgColor="FCE4D6")   # light orange
-BOTH_FILL    = PatternFill("solid", fgColor="E2EFDA")   # light green
-NEITHER_FILL = PatternFill("solid", fgColor="F2F2F2")   # light grey
+TEAM1_FILL   = PatternFill("solid", fgColor="D9E1F2")   #light blue
+TEAM2_FILL   = PatternFill("solid", fgColor="FCE4D6")   #light orange
+BOTH_FILL    = PatternFill("solid", fgColor="E2EFDA")   #light green
+NEITHER_FILL = PatternFill("solid", fgColor="F2F2F2")   #light grey
 HEADER_FONT  = Font(name="Arial", bold=True, color="FFFFFF", size=11)
 BODY_FONT    = Font(name="Arial", size=10)
 THIN_BORDER  = Border(left=Side(style="thin"), right=Side(style="thin"),
@@ -51,9 +49,9 @@ SENTIMENT_COLORS = {
 }
 
 
-# ════════════════════════════════════════════════════════════════════════════
-# HELPERS
-# ════════════════════════════════════════════════════════════════════════════
+#──────────────────────────────────────────────────────────────────
+#HELPERS
+#──────────────────────────────────────────────────────────────────
 
 def load_teams(json_path):
     with open(json_path, "r", encoding="utf-8") as f:
@@ -70,9 +68,8 @@ def load_teams(json_path):
     }
 
 def detect_teams_from_filename(filename, teams):
-    """Look up which two teams play in this file using the file_names field
-    in the JSON — exact match, no alias guessing needed.
-    Returns [team1_name, team2_name] in the order they appear in the filename."""
+    """Look up which two teams play in this file using the file_names field in the JSON
+       Returns [team1_name, team2_name] in the order they appear in the filename."""
     base = re.sub(r'_?comments$', '',
                   os.path.splitext(os.path.basename(filename))[0],
                   flags=re.IGNORECASE)
@@ -111,7 +108,6 @@ def comment_matches_team(text_lower, data):
             return True
     return False
 
-
 def detect_team(text, t1n, t1d, t2n, t2d):
     tl = str(text).lower()
     h1 = comment_matches_team(tl, t1d)
@@ -121,7 +117,6 @@ def detect_team(text, t1n, t1d, t2n, t2d):
     if h2:        return t2n
     return "Neither"
 
-
 def preprocess(text):
     return " ".join(
         "@user" if t.startswith("@") and len(t) > 1 else
@@ -129,15 +124,12 @@ def preprocess(text):
         for t in str(text).split()
     )
 
-
 def get_sentiment(text, tokenizer, model, config):
     encoded = tokenizer(preprocess(text), return_tensors="pt",
                         truncation=True, max_length=512)
     scores  = softmax(model(**encoded)[0][0].detach().numpy())
-    # .title() ensures "positive"->"Positive", "POSITIVE"->"Positive", etc.
-    label   = config.id2label[int(np.argmax(scores))].title()
+    label   = config.id2label[int(np.argmax(scores))].title() #.title() ensures "positive"->"Positive", "POSITIVE"->"Positive", etc.
     return label, round(float(scores[0]),4), round(float(scores[1]),4), round(float(scores[2]),4)
-
 
 def style_header(ws, ncols):
     for c in range(1, ncols+1):
@@ -145,12 +137,10 @@ def style_header(ws, ncols):
         cell.font = HEADER_FONT; cell.fill = HEADER_FILL; cell.border = THIN_BORDER
         cell.alignment = Alignment(horizontal="center", vertical="center", wrap_text=True)
 
-
 def auto_widths(ws, max_w=60):
     for col in ws.columns:
         w = max((len(str(c.value)) if c.value else 0) for c in col)
         ws.column_dimensions[get_column_letter(col[0].column)].width = min(w+4, max_w)
-
 
 def write_sheet(ws, df, row_fill=None):
     headers = list(df.columns)
@@ -171,16 +161,11 @@ def write_sheet(ws, df, row_fill=None):
     auto_widths(ws)
     ws.freeze_panes = "A2"
 
-
 def make_sent_summary(df, group_cols):
     """Build a sentiment pivot table with counts and percentages."""
-    # Normalise sentiment to Title Case before grouping
     df = df.copy()
     df["sentiment"] = df["sentiment"].astype(str).str.title()
-
     grp = df.groupby(group_cols + ["sentiment"]).size().unstack(fill_value=0).reset_index()
-
-    # Print what columns came out of the unstack so we can debug if needed
     print(f"    [summary] columns after unstack: {list(grp.columns)}")
 
     for c in ["Positive", "Neutral", "Negative"]:
@@ -189,7 +174,7 @@ def make_sent_summary(df, group_cols):
 
     keep = group_cols + [c for c in ["Positive","Neutral","Negative"] if c in grp.columns]
     grp  = grp[keep].copy()
-    grp["Total"]      = grp[["Positive","Neutral","Negative"]].sum(axis=1)
+    grp["Total"] = grp[["Positive","Neutral","Negative"]].sum(axis=1)
     denom = grp["Total"].replace(0, np.nan)
     grp["% Positive"] = (grp["Positive"] / denom * 100).round(1).fillna(0)
     grp["% Neutral"]  = (grp["Neutral"]  / denom * 100).round(1).fillna(0)
@@ -197,28 +182,27 @@ def make_sent_summary(df, group_cols):
     return grp
 
 
-# ════════════════════════════════════════════════════════════════════════════
+#──────────────────────────────────────────────────────────────────
 # MAIN
-# ════════════════════════════════════════════════════════════════════════════
+#──────────────────────────────────────────────────────────────────
 def main():
-    # -- Validate JSON --
+    #-- Validate JSON --
     if not os.path.exists(TEAMS_JSON):
         print(f"ERROR: '{TEAMS_JSON}' not found in this folder.")
         print("Make sure MarchMadnessAliases.json is in the same folder as this script.")
         return
-
     teams = load_teams(TEAMS_JSON)
     print(f"Loaded {len(teams)} teams from {TEAMS_JSON}")
 
-    # -- Load sentiment model --
+    #-- Load Sentiment Model --
     MODEL = "cardiffnlp/twitter-roberta-base-sentiment-latest"
     print("Loading sentiment model... (first run downloads ~500MB, then it's cached)")
     tokenizer = AutoTokenizer.from_pretrained(MODEL)
-    config    = AutoConfig.from_pretrained(MODEL)
-    model     = AutoModelForSequenceClassification.from_pretrained(MODEL)
+    config = AutoConfig.from_pretrained(MODEL)
+    model = AutoModelForSequenceClassification.from_pretrained(MODEL)
     print("Model ready!\n")
 
-    # -- Find input files (never include our own outputs) --
+    #-- Find input files (never include our own outputs) --
     input_files = [
         f for f in sorted(glob.glob(INPUT_FILES))
         if os.path.basename(f) not in OUTPUT_FILES
@@ -228,7 +212,7 @@ def main():
         return
     print(f"Found {len(input_files)} game file(s).\n")
 
-    # -- Process each game file --
+    #-- Process each game file --
     all_rows = []
     for filepath in input_files:
         print(f"Processing: {filepath}")
@@ -242,14 +226,12 @@ def main():
             print(f"  WARNING: column '{COMMENT_COL}' not found — skipping.\n")
             continue
 
-        gt   = detect_teams_from_filename(filepath, teams)
-        t1n  = gt[0] if len(gt) >= 1 else "Team 1"
-        t2n  = gt[1] if len(gt) >= 2 else "Team 2"
-        t1d  = teams.get(t1n, {"aliases":[],"coach":[],"players":[],"ignore_words":[]})
-        t2d  = teams.get(t2n, {"aliases":[],"coach":[],"players":[],"ignore_words":[]})
-        game = re.sub(r'_?comments$', '',
-                      os.path.splitext(os.path.basename(filepath))[0],
-                      flags=re.IGNORECASE).replace("_", " ")
+        gt = detect_teams_from_filename(filepath, teams)
+        t1n = gt[0] if len(gt) >= 1 else "Team 1"
+        t2n = gt[1] if len(gt) >= 2 else "Team 2"
+        t1d = teams.get(t1n, {"aliases":[],"coach":[],"players":[],"ignore_words":[]})
+        t2d = teams.get(t2n, {"aliases":[],"coach":[],"players":[],"ignore_words":[]})
+        game = re.sub(r'_?comments$', '', os.path.splitext(os.path.basename(filepath))[0], flags=re.IGNORECASE).replace("_", " ")
 
         print(f"  Teams detected : {t1n}  vs  {t2n}")
         print(f"  Comments to process: {len(df)}")
@@ -259,15 +241,15 @@ def main():
             team_tag = detect_team(comment, t1n, t1d, t2n, t2d)
             sentiment, neg, neu, pos = get_sentiment(comment, tokenizer, model, config)
             all_rows.append({
-                "game":           game,
-                "team_1":         t1n,
-                "team_2":         t2n,
+                "game": game,
+                "team_1": t1n,
+                "team_2": t2n,
                 **{k: row[k] for k in df.columns if k != COMMENT_COL},
-                COMMENT_COL:      comment,
-                "team_tag":       team_tag,
-                "sentiment":      sentiment,
+                COMMENT_COL: comment,
+                "team_tag": team_tag,
+                "sentiment": sentiment,
                 "score_negative": neg,
-                "score_neutral":  neu,
+                "score_neutral": neu,
                 "score_positive": pos,
             })
         print(f"  Done.\n")
@@ -278,7 +260,7 @@ def main():
 
     master = pd.DataFrame(all_rows)
 
-    # ── DIAGNOSTIC: always print this so you can verify sentiment is working ──
+    #── DIAGNOSTIC: always print this so you can verify sentiment is working
     print("── Team Tag Distribution ───────────────────────────")
     print(master["team_tag"].value_counts().to_string())
     print("\n── Sentiment Distribution ──────────────────────────")
@@ -287,13 +269,13 @@ def main():
     print(f"── Sentiment dtype: {master['sentiment'].dtype}")
     print()
 
-    # Split into 4 buckets
-    df_t1      = master[master["team_tag"] == master["team_1"]].reset_index(drop=True)
-    df_t2      = master[master["team_tag"] == master["team_2"]].reset_index(drop=True)
-    df_both    = master[master["team_tag"] == "Both Teams"].reset_index(drop=True)
+    #Split into 4 buckets
+    df_t1 = master[master["team_tag"] == master["team_1"]].reset_index(drop=True)
+    df_t2 = master[master["team_tag"] == master["team_2"]].reset_index(drop=True)
+    df_both = master[master["team_tag"] == "Both Teams"].reset_index(drop=True)
     df_neither = master[master["team_tag"] == "Neither"].reset_index(drop=True)
 
-    # ── OUTPUT 1: all_comments_labeled.xlsx ─────────────────────────────
+    #── OUTPUT 1: all_comments_labeled.xlsx ─────────────────────────────
     print("Writing all_comments_labeled.xlsx ...")
     wb1 = Workbook(); ws1 = wb1.active; ws1.title = "All Comments"
     headers = list(master.columns)
@@ -303,9 +285,9 @@ def main():
     for _, row in master.iterrows():
         ws1.append(list(row)); r = ws1.max_row
         tag = row["team_tag"]
-        if   tag == row["team_1"]: rf = TEAM1_FILL
+        if tag == row["team_1"]: rf = TEAM1_FILL
         elif tag == row["team_2"]: rf = TEAM2_FILL
-        else:                      rf = tag_fill.get(tag, NEITHER_FILL)
+        else: rf = tag_fill.get(tag, NEITHER_FILL)
         for ci, col_name in enumerate(headers, 1):
             cell = ws1.cell(row=r, column=ci)
             cell.font = BODY_FONT; cell.border = THIN_BORDER
@@ -319,17 +301,16 @@ def main():
 
     wl = wb1.create_sheet("Legend")
     legend = [
-        ("Blue rows",    "Comments about Team 1"),
-        ("Orange rows",  "Comments about Team 2"),
-        ("Green rows",   "Comments mentioning both teams"),
-        ("Grey rows",    "Neither team mentioned"),
+        ("Blue rows", "Comments about Team 1"),
+        ("Orange rows", "Comments about Team 2"),
+        ("Green rows", "Comments mentioning both teams"),
+        ("Grey rows", "Neither team mentioned"),
         ("", ""),
-        ("Green cell",   "Positive sentiment"),
-        ("Yellow cell",  "Neutral sentiment"),
-        ("Red cell",     "Negative sentiment"),
+        ("Green cell", "Positive sentiment"),
+        ("Yellow cell", "Neutral sentiment"),
+        ("Red cell", "Negative sentiment"),
     ]
-    lfills = [TEAM1_FILL, TEAM2_FILL, BOTH_FILL, NEITHER_FILL, None,
-              SENTIMENT_COLORS["Positive"], SENTIMENT_COLORS["Neutral"], SENTIMENT_COLORS["Negative"]]
+    lfills = [TEAM1_FILL, TEAM2_FILL, BOTH_FILL, NEITHER_FILL, None, SENTIMENT_COLORS["Positive"], SENTIMENT_COLORS["Neutral"], SENTIMENT_COLORS["Negative"]]
     for i, (a, b) in enumerate(legend, 1):
         wl.cell(i,1,a).font = Font(name="Arial", size=10)
         wl.cell(i,2,b).font = Font(name="Arial", size=10)
@@ -339,11 +320,11 @@ def main():
     wb1.save("all_comments_labeled.xlsx")
     print("  Saved: all_comments_labeled.xlsx")
 
-    # ── OUTPUT 3: sentiment_summary.xlsx ────────────────────────────────
+    #── OUTPUT 3: sentiment_summary.xlsx ────────────────────────────────
     print("Writing sentiment_summary.xlsx ...")
     wb3 = Workbook(); wb3.remove(wb3.active)
 
-    # Full breakdown
+    #Full breakdown
     ws_full = wb3.create_sheet("By Game & Team")
     full = make_sent_summary(master, ["game", "team_tag"])
     write_sheet(ws_full, full)
@@ -355,12 +336,12 @@ def main():
             if cn in col_names:
                 ws_full.cell(row=r, column=col_names.index(cn)+1).fill = fill
 
-    # Per-bucket sentiment sheets
+    #Per-bucket sentiment sheets
     for sheet_name, df_s, gcols, rename_col, fill in [
-        ("Team 1 Sentiment", df_t1,      ["game","team_1"], "team_1", TEAM1_FILL),
-        ("Team 2 Sentiment", df_t2,      ["game","team_2"], "team_2", TEAM2_FILL),
-        ("Both Sentiment",   df_both,    ["game"],          None,     BOTH_FILL),
-        ("Neither Sentiment",df_neither, ["game"],          None,     NEITHER_FILL),
+        ("Team 1 Sentiment", df_t1, ["game","team_1"], "team_1", TEAM1_FILL),
+        ("Team 2 Sentiment", df_t2, ["game","team_2"], "team_2", TEAM2_FILL),
+        ("Both Sentiment", df_both, ["game"], None, BOTH_FILL),
+        ("Neither Sentiment", df_neither, ["game"], None, NEITHER_FILL),
     ]:
         ws = wb3.create_sheet(sheet_name)
         if df_s.empty:
@@ -373,14 +354,8 @@ def main():
         write_sheet(ws, s, row_fill=fill)
 
     wb3.save("sentiment_summary.xlsx")
-    print("  Saved: sentiment_summary.xlsx")
-
-    print("""
-All done! Three output files created:
-  • all_comments_labeled.xlsx  — every comment tagged and color-coded
-  • sentiment_summary.xlsx     — sentiment counts and percentages
-""")
-
-
+    print("Saved: sentiment_summary.xlsx")
+    print("COMPLETED")
+    
 if __name__ == "__main__":
     main()
